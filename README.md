@@ -4,10 +4,10 @@ Project Overview: This assignment involves developing a distributed system for H
 Functional Requirements:
 
 Customer Registration and Management:
-1. Customers can register on the platform by providing their name, email, and phone number.
-2.Upon registration, customers receive a unique customer ID.
-3.Customers can log in using their email and view their profile, including their upcoming and past appointments.
-4.Customers can delete their profile, which will also remove all associated appointments.
+  1. Customers can register on the platform by providing their name, email, and phone number.
+  2.Upon registration, customers receive a unique customer ID.
+  3.Customers can log in using their email and view their profile, including their upcoming and past appointments.
+  4.Customers can delete their profile, which will also remove all associated appointments.
 
 Appointment Scheduling:
 1.Customers can browse available services and select an appointment date and time.
