@@ -16,7 +16,7 @@ Customers can view, update, or cancel their appointments.
 Stylists and their availability are managed by the admin to ensure smooth appointment scheduling.
 
 Service Listings and Management:
-The system should display a list of services (e.g., braiding, blow out), including duration and price.
+The system should display a list of services (e.g., braiding, blow out, hair stylist), including duration and price.
 Admin can add, update, or delete services as needed.
 Customers can search for services based on type, price, or stylist.
 Appointment History and Transactions:
