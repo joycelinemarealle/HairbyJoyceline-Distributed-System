@@ -2,11 +2,11 @@ Distributed System for HairbyJoyceline
 Project Overview: This assignment involves developing a distributed system for HairbyJoyceline, a hair business. The objective is to design and implement a RESTful service that allows customers to book appointments, view available services, manage bookings, and interact with the hairstylist (Joyceline). The system should provide both customer-facing and admin-facing functionalities to support seamless operations of the business.
 
 Functional Requirements:
-Customer Registration and Management:
-Customers can register on the platform by providing their name, email, and phone number.
-Upon registration, customers receive a unique customer ID.
-Customers can log in using their email and view their profile, including their upcoming and past appointments.
-Customers can delete their profile, which will also remove all associated appointments.
+Customer Registration and Management:_
+Customers can register on the platform by providing their name, email, and phone number._
+Upon registration, customers receive a unique customer ID._
+Customers can log in using their email and view their profile, including their upcoming and past appointments._
+Customers can delete their profile, which will also remove all associated appointments._
 
 Appointment Scheduling:
 Customers can browse available services and select an appointment date and time.
