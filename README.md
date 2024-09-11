@@ -4,42 +4,42 @@ Project Overview: This assignment involves developing a distributed system for H
 Functional Requirements:
 
 Customer Registration and Management:
-  1. Customers can register on the platform by providing their name, email, and phone number.
-  2.Upon registration, customers receive a unique customer ID.
-  3.Customers can log in using their email and view their profile, including their upcoming and past appointments.
-  4.Customers can delete their profile, which will also remove all associated appointments.
+Customers can register on the platform by providing their name, email, and phone number.
+Upon registration, customers receive a unique customer ID.
+Customers can log in using their email and view their profile, including their upcoming and past appointments.
+Customers can delete their profile, which will also remove all associated appointments.
 
 Appointment Scheduling:
-1.Customers can browse available services and select an appointment date and time.
-2.They can choose a specific hairstyle and confirm their booking.
-3.Customers can view, update, or cancel their appointments.
-
+Customers can browse available services and select an appointment date and time.
+They can choose a specific hairstyle and confirm their booking.
+Customers can view, update, or cancel their appointments.
 Service Listings and Management:
-1.The system should display a list of services (e.g., braiding, blowouts), including duration and price.
-2.Admin (Joyceline) can add, update, or delete services as needed.
-3.Customers can search for services based on type and price.
+
+The system should display a list of services (e.g., braiding, blowouts), including duration and price.
+Admin (Joyceline) can add, update, or delete services as needed.
+Customers can search for services based on type and price.
 
 Appointment History and Transactions:
-1.Customers can view their appointment history and the status of any completed bookings.
-2.The system should track all transactions (i.e., bookings, cancellations) and keep a record for admin review.
+Customers can view their appointment history and the status of any completed bookings.
+The system should track all transactions (i.e., bookings, cancellations) and keep a record for admin review.
 
 Non-Functional Requirements:
-1.Scalability: The system should be able to handle an increasing number of users and appointments without affecting performance.
-2.Security: Ensure customer data is protected with encryption and secure login.
-3.Persistence: All customer, appointment, and service data should be stored in a PostgreSQL database.
-4.Performance: Responses to user actions should be processed within 2 seconds.
+Scalability: The system should be able to handle an increasing number of users and appointments without affecting performance.
+Security: Ensure customer data is protected with encryption and secure login.
+Persistence: All customer, appointment, and service data should be stored in a PostgreSQL database.
+Performance: Responses to user actions should be processed within 2 seconds.
 
 Technologies to Use:
-1.Backend: Java with Spring Boot for RESTful API development.
-2.Frontend: Angular for the user interface.
-3.Database: PostgreSQL for storing data.
-4.Deployment: Docker for containerization and easy deployment across environments.
-
+Backend: Java with Spring Boot for RESTful API development.
+Frontend: Angular for the user interface.
+Database: PostgreSQL for storing data.
+Deployment: Docker for containerization and easy deployment across environments.
 Expected Deliverables:
-1.A functional distributed system with RESTful services.
-2.A working frontend interface allowing users to interact with the system.
-3.Complete documentation, including API specifications and user guides.
-4.A short presentation outlining the system’s design, implementation, and features.
+
+A functional distributed system with RESTful services.
+A working frontend interface allowing users to interact with the system.
+Complete documentation, including API specifications and user guides.
+A short presentation outlining the system’s design, implementation, and features.
 
 
 RESTful Service Interface Specification
