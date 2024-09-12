@@ -1,10 +1,8 @@
 package com.hairbyjoyceline_marealle.hairbusiness.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.core.annotation.Order;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,15 +14,18 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customer_id;
+    private Long customer_id;
 
     @NotNull
     private String name;
     private String email;
     private int phoneNumber;
-    private final List<Appointment> appointments = new ArrayList<>()
 
-    public Customer(int customer_id, String name, String email, int phoneNumber) {
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OrderBy(value = "appt_id desc")
+    private final List<Appointment> appointments = new ArrayList<>();
+
+    public Customer(Long customer_id, String name, String email, int phoneNumber) {
         this.customer_id = customer_id;
         this.name = name;
         this.email = email;
@@ -35,12 +36,16 @@ public class Customer implements Serializable {
 
     }
 
-    public int getCustomer_id() {
+    public Long getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(Long customer_id) {
         this.customer_id = customer_id;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
     public String getName() {
