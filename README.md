@@ -50,7 +50,7 @@ Response Example:
 json
 Copy code
 {
-  "id": 123,
+  "customerId": 123,
   "name": "Jane Doe",
   "appointments": [456, 789]
 }
@@ -76,7 +76,6 @@ Copy code
 {
   "customerId": 123,
   "serviceId": 1,
-  "stylistId": 5,
   "date": "2024-09-15T14:00:00"
 }
 GET /appointment/{appointmentId}: Retrieve details of a specific appointment.
@@ -94,13 +93,13 @@ json
 Copy code
 [
   {
-    "id": 1,
+    "serviceId": 1,
     "name": "Braiding",
     "duration": "2 hours",
     "price": 50.00
   },
   {
-    "id": 2,
+    "serviceId": 2,
     "name": "Haircut",
     "duration": "1 hour",
     "price": 30.00
