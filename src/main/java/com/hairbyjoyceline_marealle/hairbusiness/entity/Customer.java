@@ -19,14 +19,13 @@ public class Customer implements Serializable {
     @NotNull
     private String name;
     private String email;
-    private int phoneNumber;
+    private Long phoneNumber;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy(value = "appt_id desc")
     private final List<Appointment> appointments = new ArrayList<>();
 
-    public Customer(Long customer_id, String name, String email, int phoneNumber) {
-        this.customer_id = customer_id;
+    public Customer( String name, String email, Long phoneNumber) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -64,11 +63,11 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

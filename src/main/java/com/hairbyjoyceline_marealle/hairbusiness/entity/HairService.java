@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class hairService implements Serializable {
+public class HairService implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class hairService implements Serializable {
     private double duration;
     private double price;
 
-    public hairService(Long service_id, String name, double duration, double price) {
+    public HairService(Long service_id, String name, double duration, double price) {
         this.service_id = service_id;
         this.name = name;
         this.duration = duration;
@@ -63,7 +63,7 @@ public class hairService implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        hairService that = (hairService) o;
+        HairService that = (HairService) o;
         return Objects.equals(service_id, that.service_id);
     }
 
