@@ -12,19 +12,23 @@ import java.util.List;
 
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepo customerRepo;
-    private Customer customer;
-
     public CustomerServiceImplementation(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
-//
 
     @Override
     public CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO) {
-       //create customer the save to database
-        Customer customer = new Customer ("Jojo", "jojo@gmail.com", 5855557892L);
-        customerRepo.save(customer);
-        return CustomerMapper.customerMapper(customer);
+       //Map customerRequestDTO to Customer Entity
+        Customer customer = new Customer(
+                createCustomerDTO.name(),
+                createCustomerDTO.email(),
+                createCustomerDTO.phone()
+        );
+        // Save to database
+        Customer savedCustomer = customerRepo.save(customer);
+
+        //Map saved customer entity to customerDTO and return it
+        return CustomerMapper.customerMapper(savedCustomer);
     }
 
     @Override
