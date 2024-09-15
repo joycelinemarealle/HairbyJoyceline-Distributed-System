@@ -11,9 +11,9 @@ public class Admin implements Serializable {
     private Long admin_id;
     private String name;
     private String email;
-    private List<hairService> services;
+    private List<HairService> services;
 
-    public Admin(Long admin_id, String name, String email, List<hairService> services) {
+    public Admin(Long admin_id, String name, String email, List<HairService> services) {
         this.admin_id = admin_id;
         this.name = name;
         this.email = email;
@@ -44,11 +44,11 @@ public class Admin implements Serializable {
         this.email = email;
     }
 
-    public List<hairService> getServices() {
+    public List<HairService> getServices() {
         return services;
     }
 
-    public void setServices(List<hairService> services) {
+    public void setServices(List<HairService> services) {
         this.services = services;
     }
 

@@ -14,7 +14,7 @@ public class Transaction implements Serializable {
     private LocalDate transac_date;
     private double amount;
     private PaymentMethod paymentMethod;
-    private hairService service;
+    private HairService hairService;
     private Customer customer;
     private TransactionType transactionType;
     private TransactionStatus transactionStatus;

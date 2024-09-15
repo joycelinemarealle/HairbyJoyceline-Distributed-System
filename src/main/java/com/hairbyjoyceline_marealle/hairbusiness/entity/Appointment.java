@@ -13,34 +13,40 @@ public class Appointment implements Serializable {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long appt_id ;
-
     private LocalDate appt_date;
     private LocalTime appt_time;
-    private String style;
+
     private AppointmentStatus appointmentStatus;
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Customer customer;
 
+    private HairService hairService;
+
   public Long getAppt_id() {
     return appt_id;
   }
 
-  public Appointment(Long appt_id, LocalDate appt_date, LocalTime appt_time, String style, AppointmentStatus appointmentStatus, Customer customer) {
-    this.appt_id = appt_id;
+  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time, String style, AppointmentStatus appointmentStatus) {
     this.appt_date = appt_date;
     this.appt_time = appt_time;
-    this.style = style;
     this.appointmentStatus = appointmentStatus;
     this.customer = customer;
+    this.hairService = hairService;
   }
 
   public Appointment(){
 
   }
-  public void setAppt_id(Long appt_id) {
-    this.appt_id = appt_id;
+
+  public HairService getHairService() {
+    return hairService;
   }
+
+  public void setHairService(HairService hairService) {
+    this.hairService = hairService;
+  }
+
 
   public LocalDate getAppt_date() {
     return appt_date;
@@ -56,14 +62,6 @@ public class Appointment implements Serializable {
 
   public void setAppt_time(LocalTime appt_time) {
     this.appt_time = appt_time;
-  }
-
-  public String getStyle() {
-    return style;
-  }
-
-  public void setStyle(String style) {
-    this.style = style;
   }
 
   public AppointmentStatus getAppointmentStatus() {
@@ -101,7 +99,6 @@ public class Appointment implements Serializable {
             "appt_id=" + appt_id +
             ", appt_date=" + appt_date +
             ", appt_time=" + appt_time +
-            ", style='" + style + '\'' +
             ", AppointmentStatus=" + appointmentStatus +
             ", customer=" + customer +
             '}';
