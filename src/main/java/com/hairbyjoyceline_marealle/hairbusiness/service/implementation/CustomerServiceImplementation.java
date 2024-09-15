@@ -46,4 +46,17 @@ public class CustomerServiceImplementation implements CustomerService {
         }
 
     }
+
+    @Override
+    public CustomerDTO deleteCustomer(Long customer_id) throws CustomerNotFoundException {
+        try {
+            Optional<Customer> optionalCustomer = customerRepo.findById( customer_id);
+
+            //unwrap -> to entity -> DTO
+            return CustomerMapper.toDTO(optionalCustomer.get());
+
+        }catch (Exception e){
+            throw new CustomerNotFoundException(customer_id);
+        }
+    }
 }

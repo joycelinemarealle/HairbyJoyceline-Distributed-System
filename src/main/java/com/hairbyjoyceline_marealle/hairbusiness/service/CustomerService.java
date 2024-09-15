@@ -11,4 +11,5 @@ public interface CustomerService  {
     CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO);
     List<CustomerDTO> retrieveAllCustomers();
     CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException;
+    CustomerDTO deleteCustomer (Long customer_id) throws CustomerNotFoundException;
     }
