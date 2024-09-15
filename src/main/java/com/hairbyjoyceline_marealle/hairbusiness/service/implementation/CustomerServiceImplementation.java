@@ -9,9 +9,11 @@ import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepo;
 import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepo customerRepo;
+
     public CustomerServiceImplementation(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
@@ -19,25 +21,29 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO) {
        //Map customerRequestDTO to Customer Entity
-        Customer customer = new Customer(
-                createCustomerDTO.name(),
-                createCustomerDTO.email(),
-                createCustomerDTO.phone()
-        );
+        Customer customer = CustomerMapper.toEntity(createCustomerDTO);
+
         // Save to database
         Customer savedCustomer = customerRepo.save(customer);
 
         //Map saved customer entity to customerDTO and return it
-        return CustomerMapper.customerMapper(savedCustomer);
+        return CustomerMapper.toDTO(savedCustomer);
     }
 
     @Override
-    public List<CustomerDTO> retrieveAllCustomer() {
-        return List.of();
+    public List<CustomerDTO> retrieveAllCustomers() {
+        return CustomerMapper.toDTO(customerRepo.findAll());
     }
 
     @Override
     public CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException {
-        return null;
+        try{
+            Optional<Customer> optionalCustomer= customerRepo.findById(customer_id);
+         return CustomerMapper.toDTO(optionalCustomer.get());
+
+        } catch (Exception e){
+             throw new CustomerNotFoundException(customer_id)  ;
+        }
+
     }
 }

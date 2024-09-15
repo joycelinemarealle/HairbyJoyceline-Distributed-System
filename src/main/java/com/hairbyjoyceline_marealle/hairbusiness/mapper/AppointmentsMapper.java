@@ -8,7 +8,7 @@ import java.util.List;
 public class AppointmentsMapper {
     //Convert appointment entity list to appt DTO
 
-    public static List<AppointmentDTO> appointmentMapper(List<Appointment> appointments){
+    public static List<AppointmentDTO> toDTO(List<Appointment> appointments){
       return appointments.stream()
                .map(appointment -> new AppointmentDTO(
                        appointment.getAppt_id(),

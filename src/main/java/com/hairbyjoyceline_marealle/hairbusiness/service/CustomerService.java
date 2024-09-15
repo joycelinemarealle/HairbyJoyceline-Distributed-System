@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface CustomerService  {
     CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO);
-    List<CustomerDTO> retrieveAllCustomer();
+    List<CustomerDTO> retrieveAllCustomers();
     CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException;
     }
