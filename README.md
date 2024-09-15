@@ -12,8 +12,8 @@ Appointment Scheduling:
 Customers can browse available services and select an appointment date and time.
 They can choose a specific hairstyle and confirm their booking.
 Customers can view, update, or cancel their appointments.
-Service Listings and Management:
 
+Service Listings and Management:
 The system should display a list of services (e.g., braiding, blowouts), including duration and price.
 Admin (Joyceline) can add, update, or delete services as needed.
 Customers can search for services based on type and price.
