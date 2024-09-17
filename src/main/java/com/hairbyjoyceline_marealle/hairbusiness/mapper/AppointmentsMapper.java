@@ -5,6 +5,9 @@ import com.hairbyjoyceline_marealle.hairbusiness.dto.AppointmentRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.dto.CustomerRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Appointment;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
+import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepo;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import java.util.List;
 
@@ -20,14 +23,17 @@ public class AppointmentsMapper {
                .toList();
 
     }
-
-    //converts appointment request DTO to entity
-    public static Appointment toEntity(AppointmentRequestDTO appointmentRequestDTO){
-        return new Appointment(
-                appointmentRequestDTO.serviceId(),
-                appointmentRequestDTO.date(),
-                appointmentRequestDTO.time());
-    }
+//    //converts appointment request DTO to entity
+//    public static Appointment toEntity(AppointmentRequestDTO appointmentRequestDTO){
+//        Long customer_id = appointmentRequestDTO.customerId();
+//        CustomerRepo customerRepo
+//        Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+//
+//        return new Appointment(
+//                customer,
+//                appointmentRequestDTO.date(),
+//                appointmentRequestDTO.time());
+//    }
 
     //converts an entity to DTO
     public static AppointmentDTO toDTO (Appointment appointment){

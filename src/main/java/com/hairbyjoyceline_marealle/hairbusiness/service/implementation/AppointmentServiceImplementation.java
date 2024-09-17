@@ -4,6 +4,7 @@ import com.hairbyjoyceline_marealle.hairbusiness.dto.AppointmentDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.dto.AppointmentRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Appointment;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
+import com.hairbyjoyceline_marealle.hairbusiness.exception.AppointmentNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.mapper.AppointmentsMapper;
 import com.hairbyjoyceline_marealle.hairbusiness.repository.AppointmentRepo;
@@ -29,7 +30,7 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public AppointmentDTO createAppointment(AppointmentRequestDTO createAppointmentDTO) {
+    public AppointmentDTO createAppointment(AppointmentRequestDTO createAppointmentDTO) throws CustomerNotFoundException {
         //
 //check if customer exists  + registered
         Long customer_id = createAppointmentDTO.customerId();
@@ -45,16 +46,20 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
     @Override
     public List<AppointmentDTO> retrieveAllAppointment() {
-        return List.of();
+        List<Appointment> appointments = appointmentRepo.findAll();
+       return AppointmentsMapper.toDTO(appointments);
+
     }
 
     @Override
-    public AppointmentDTO findAccountById(Long appointment_id) {
-        return null;
+    public AppointmentDTO findAccountById(Long appointment_id) throws AppointmentNotFoundException{
+        Appointment appointment = appointmentRepo.findById(appointment_id).orElseThrow(() -> new AppointmentNotFoundException(appointment_id));
+        return AppointmentsMapper.toDTO(appointment);
     }
 
     @Override
     public AppointmentDTO deleteAppointment(Long appointment_id) {
+        Appointment appointment = appointmentRepo.findById(appointment_id).orElseThrow(() -> new AppointmentNotFoundException(appointment_id));
         return null;
     }
 }
