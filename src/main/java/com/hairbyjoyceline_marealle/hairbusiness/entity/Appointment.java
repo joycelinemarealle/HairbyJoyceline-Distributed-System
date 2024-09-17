@@ -34,6 +34,12 @@ public class Appointment implements Serializable {
     this.customer = customer;
     this.hairService = hairService;
   }
+  public Appointment( Customer customer,  LocalDate appt_date, LocalTime appt_time) {
+    this.appt_date = appt_date;
+    this.appt_time = appt_time;
+    this.customer = customer;
+  }
+
 
   public Appointment(){
 
