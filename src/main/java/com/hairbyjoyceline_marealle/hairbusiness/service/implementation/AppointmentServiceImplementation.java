@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class AppointmentServiceImplementation implements AppointmentService {
 
@@ -35,31 +36,36 @@ public class AppointmentServiceImplementation implements AppointmentService {
 //check if customer exists  + registered
         Long customer_id = createAppointmentDTO.customerId();
         Long service_id = createAppointmentDTO.serviceId();
-       Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
-
+        Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
         //Create appointment
-        Appointment appointment =  new Appointment(customer, createAppointmentDTO.date(), createAppointmentDTO.time());
+        Appointment appointment = new Appointment(customer, createAppointmentDTO.date(), createAppointmentDTO.time());
 
         //Save new appointnment to Database
         Appointment savedAppointment = (Appointment) appointmentRepo.save(appointment);
         return AppointmentsMapper.toDTO(savedAppointment);
     }
+
     @Override
     public List<AppointmentDTO> retrieveAllAppointment() {
         List<Appointment> appointments = appointmentRepo.findAll();
-       return AppointmentsMapper.toDTO(appointments);
+        return AppointmentsMapper.toDTO(appointments);
 
     }
 
     @Override
-    public AppointmentDTO findAccountById(Long appointment_id) throws AppointmentNotFoundException{
+    public AppointmentDTO findAccountById(Long appointment_id) throws AppointmentNotFoundException {
         Appointment appointment = appointmentRepo.findById(appointment_id).orElseThrow(() -> new AppointmentNotFoundException(appointment_id));
         return AppointmentsMapper.toDTO(appointment);
     }
 
     @Override
-    public AppointmentDTO deleteAppointment(Long appointment_id) {
+    public AppointmentDTO deleteAppointment(Long appointment_id) throws AppointmentNotFoundException {
+
         Appointment appointment = appointmentRepo.findById(appointment_id).orElseThrow(() -> new AppointmentNotFoundException(appointment_id));
-        return null;
+       appointmentRepo.delete(appointment);
+        return AppointmentsMapper.toDTO(appointment);
+
+
     }
 }
+
