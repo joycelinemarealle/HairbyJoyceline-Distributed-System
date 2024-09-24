@@ -18,8 +18,7 @@ public class HairService implements Serializable {
     private double duration;
     private double price;
 
-    public HairService(Long service_id, String name, double duration, double price) {
-        this.service_id = service_id;
+    public HairService( String name, double duration, double price) {
         this.name = name;
         this.duration = duration;
         this.price = price;

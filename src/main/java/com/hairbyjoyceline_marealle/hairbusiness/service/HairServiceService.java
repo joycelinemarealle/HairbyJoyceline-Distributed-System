@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface HairServiceService extends JpaRepository <HairServiceService,Long> {
+public interface HairServiceService  {
 HairServiceDTO createHairService(HairServiceRequestDTO hairServiceRequestDTO);
 List<HairServiceDTO> retrieveAllHairServices();
 HairServiceDTO findHairServiceById (Long hairService_id) throws HairServiceNotFoundException;
