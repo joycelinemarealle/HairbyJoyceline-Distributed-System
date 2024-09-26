@@ -19,6 +19,7 @@ public class Appointment implements Serializable {
     private AppointmentStatus appointmentStatus;
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     private HairService hairService;
