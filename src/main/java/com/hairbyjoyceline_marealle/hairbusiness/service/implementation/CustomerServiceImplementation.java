@@ -32,31 +32,21 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<CustomerDTO> retrieveAllCustomers() {
+
         return CustomerMapper.toDTO(customerRepo.findAll());
     }
 
     @Override
     public CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException {
-        try{
-            Optional<Customer> optionalCustomer= customerRepo.findById(customer_id);
-         return CustomerMapper.toDTO(optionalCustomer.get());
-
-        } catch (Exception e){
-             throw new CustomerNotFoundException(customer_id)  ;
-        }
+        Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+        return CustomerMapper.toDTO(customer);
 
     }
 
     @Override
     public CustomerDTO deleteCustomer(Long customer_id) throws CustomerNotFoundException {
-        try {
-            Optional<Customer> optionalCustomer = customerRepo.findById( customer_id);
-
-            //unwrap -> to entity -> DTO
-            return CustomerMapper.toDTO(optionalCustomer.get());
-
-        }catch (Exception e){
-            throw new CustomerNotFoundException(customer_id);
-        }
+        Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+        customerRepo.delete(customer);
+        return CustomerMapper.toDTO(customer);
     }
 }

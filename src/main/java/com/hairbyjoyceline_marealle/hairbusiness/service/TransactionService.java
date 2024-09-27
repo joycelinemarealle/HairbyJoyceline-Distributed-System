@@ -16,6 +16,6 @@ public interface TransactionService  {
     TransactionDTO createTransaction (TransactionRequestDTO transactionRequestDTO);
     List<TransactionDTO> retrieveAllTransactions();
     TransactionDTO findHairTransactionById (Long transaction_id) throws TransactionNotFoundException;
-    HairServiceDTO deleteHairService (Long hairService_id) throws TransactionNotFoundException;
+    TransactionDTO deleteTransaction (Long transaction_id) throws TransactionNotFoundException;
 
 }

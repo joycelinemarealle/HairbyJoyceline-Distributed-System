@@ -12,6 +12,8 @@ import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepo;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Component //spring inject it into service layer and non- static toEntity
 public class TransactionMapper {
     private final HairServiceRepo hairServiceRepo;
@@ -23,9 +25,7 @@ public class TransactionMapper {
     }
 
     // Static toEntity method with repositories passed as parameters
-    public static Transaction toEntity(TransactionRequestDTO transactionRequestDTO,
-                                       HairServiceRepo hairServiceRepo,
-                                       CustomerRepo customerRepo) {
+    public  Transaction toEntity(TransactionRequestDTO transactionRequestDTO) {
         // Fetch HairService and Customer from repos
         HairService hairService = hairServiceRepo.findById(transactionRequestDTO.hairService_id())
                 .orElseThrow(() -> new HairServiceNotFoundException(transactionRequestDTO.hairService_id()));
@@ -55,6 +55,21 @@ public class TransactionMapper {
                 transaction.getTransactionType(),
                 transaction.getTransactionStatus()
         );
+    }
+
+    public static List<TransactionDTO> toDTO (List<Transaction> transactions){
+        return transactions.stream()
+                .map(transaction -> new TransactionDTO(
+                        transaction.getTransaction_id(),
+                        transaction.getTransaction_date(),
+                        transaction.getAmount(),
+                        transaction.getPaymentMethod(),
+                        HairServiceMapper.toDTO(transaction.getHairService()),
+                        CustomerMapper.toDTO(transaction.getCustomer()),
+                        transaction.getTransactionType(),
+                        transaction.getTransactionStatus()
+
+        )).toList();
     }
 
 }

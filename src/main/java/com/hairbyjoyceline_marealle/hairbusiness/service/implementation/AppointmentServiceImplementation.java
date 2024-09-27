@@ -23,6 +23,7 @@ public class AppointmentServiceImplementation implements AppointmentService {
     private final AppointmentRepo appointmentRepo;
     private final CustomerRepo customerRepo;
     private final HairServiceRepo hairServiceRepo;
+    AppointmentsMapper appointmentsMapper;
 
     public AppointmentServiceImplementation(AppointmentRepo appointmentRepo, CustomerRepo customerRepo, HairServiceRepo hairServiceRepo) {
         this.appointmentRepo = appointmentRepo;
@@ -32,13 +33,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
     @Override
     public AppointmentDTO createAppointment(AppointmentRequestDTO createAppointmentDTO) throws CustomerNotFoundException {
-        //
-//check if customer exists  + registered
-        Long customer_id = createAppointmentDTO.customerId();
-        Long service_id = createAppointmentDTO.serviceId();
-        Customer customer = customerRepo.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
-        //Create appointment
-        Appointment appointment = new Appointment(customer, createAppointmentDTO.date(), createAppointmentDTO.time());
+        //check if customer exists  + registered
+        Appointment appointment = appointmentsMapper.toEntity(createAppointmentDTO);
 
         //Save new appointnment to Database
         Appointment savedAppointment = (Appointment) appointmentRepo.save(appointment);

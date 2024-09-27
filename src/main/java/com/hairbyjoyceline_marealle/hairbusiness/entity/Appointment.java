@@ -13,7 +13,11 @@ public class Appointment implements Serializable {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long appt_id ;
+
+  @Column(nullable = false)
     private LocalDate appt_date;
+
+  @Column(nullable = false)
     private LocalTime appt_time;
 
     private AppointmentStatus appointmentStatus;
@@ -22,25 +26,21 @@ public class Appointment implements Serializable {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+  @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+  @JoinColumn(name = "service_id")
     private HairService hairService;
 
   public Long getAppt_id() {
     return appt_id;
   }
 
-  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time, String style, AppointmentStatus appointmentStatus) {
+  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time,  AppointmentStatus appointmentStatus) {
     this.appt_date = appt_date;
     this.appt_time = appt_time;
     this.appointmentStatus = appointmentStatus;
     this.customer = customer;
     this.hairService = hairService;
   }
-  public Appointment( Customer customer,  LocalDate appt_date, LocalTime appt_time) {
-    this.appt_date = appt_date;
-    this.appt_time = appt_time;
-    this.customer = customer;
-  }
-
 
   public Appointment(){
 
