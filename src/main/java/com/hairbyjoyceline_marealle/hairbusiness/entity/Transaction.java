@@ -48,6 +48,10 @@ public class Transaction implements Serializable {
     public Transaction (){
     }
 
+    public Transaction(LocalDate now, Double amount, PaymentMethod paymentMethod, HairService hairService, Customer customer, TransactionType transactionType) {
+    }
+
+
     public Long getTransaction_id() {
         return transaction_id;
     }
