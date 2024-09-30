@@ -68,7 +68,6 @@ public class Admin implements Serializable {
                 "admin_id=" + admin_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", services=" + services +
                 '}';
     }
 }
