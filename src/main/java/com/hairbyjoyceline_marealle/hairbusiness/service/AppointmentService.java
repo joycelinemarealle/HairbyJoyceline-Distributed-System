@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AppointmentService {
     AppointmentDTO createAppointment(AppointmentRequestDTO createAppointmentDTO) throws CustomerNotFoundException;
-    List<AppointmentDTO> retrieveAllAppointment();
+    List<AppointmentDTO> retrieveAllAppointments();
     AppointmentDTO findAccountById(Long appointment_id) throws AppointmentNotFoundException;
     AppointmentDTO deleteAppointment(Long appointment_id) throws AppointmentNotFoundException;
 

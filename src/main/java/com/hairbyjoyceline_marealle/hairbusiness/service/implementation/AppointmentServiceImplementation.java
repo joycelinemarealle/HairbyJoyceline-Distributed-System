@@ -42,7 +42,7 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public List<AppointmentDTO> retrieveAllAppointment() {
+    public List<AppointmentDTO> retrieveAllAppointments() {
         List<Appointment> appointments = appointmentRepo.findAll();
         return AppointmentsMapper.toDTO(appointments);
 
