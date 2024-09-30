@@ -49,14 +49,6 @@ public class Admin implements Serializable {
         this.email = email;
     }
 
-    public List<HairService> getServices() {
-        return services;
-    }
-
-    public void setServices(List<HairService> services) {
-        this.services = services;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
