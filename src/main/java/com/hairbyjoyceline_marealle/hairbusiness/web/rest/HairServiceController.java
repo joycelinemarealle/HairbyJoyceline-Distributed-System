@@ -1,4 +1,4 @@
-package com.hairbyjoyceline_marealle.hairbusiness.controller;
+package com.hairbyjoyceline_marealle.hairbusiness.web.rest;
 
 import com.hairbyjoyceline_marealle.hairbusiness.dto.HairServiceDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.dto.HairServiceRequestDTO;
