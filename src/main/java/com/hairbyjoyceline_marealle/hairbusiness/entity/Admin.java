@@ -1,6 +1,6 @@
 package com.hairbyjoyceline_marealle.hairbusiness.entity;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,16 +8,21 @@ import java.util.Objects;
 
 @Entity
 public class Admin implements Serializable {
+    @Id
     private Long admin_id;
     private String name;
     private String email;
-    private List<HairService> services;
+    private String password;
 
-    public Admin(Long admin_id, String name, String email, List<HairService> services) {
+    public Admin(Long admin_id, String name, String email,String password) {
         this.admin_id = admin_id;
         this.name = name;
         this.email = email;
-        this.services = services;
+        this.password = password;
+    }
+
+    public Admin(){
+
     }
 
     public Long getAdmin_id() {
@@ -44,14 +49,6 @@ public class Admin implements Serializable {
         this.email = email;
     }
 
-    public List<HairService> getServices() {
-        return services;
-    }
-
-    public void setServices(List<HairService> services) {
-        this.services = services;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,7 +68,6 @@ public class Admin implements Serializable {
                 "admin_id=" + admin_id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", services=" + services +
                 '}';
     }
 }

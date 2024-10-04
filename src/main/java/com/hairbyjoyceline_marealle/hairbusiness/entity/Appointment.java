@@ -13,21 +13,28 @@ public class Appointment implements Serializable {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long appt_id ;
+
+  @Column(nullable = false)
     private LocalDate appt_date;
+
+  @Column(nullable = false)
     private LocalTime appt_time;
 
     private AppointmentStatus appointmentStatus;
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
+  @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+  @JoinColumn(name = "service_id")
     private HairService hairService;
 
   public Long getAppt_id() {
     return appt_id;
   }
 
-  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time, String style, AppointmentStatus appointmentStatus) {
+  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time,  AppointmentStatus appointmentStatus) {
     this.appt_date = appt_date;
     this.appt_time = appt_time;
     this.appointmentStatus = appointmentStatus;

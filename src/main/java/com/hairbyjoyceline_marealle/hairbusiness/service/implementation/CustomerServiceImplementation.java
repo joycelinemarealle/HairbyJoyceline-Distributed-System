@@ -5,17 +5,16 @@ import com.hairbyjoyceline_marealle.hairbusiness.dto.CustomerRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.mapper.CustomerMapper;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepo;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
 import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CustomerServiceImplementation implements CustomerService {
-    private final CustomerRepo customerRepo;
+    private final CustomerRepository customerRepository;
 
-    public CustomerServiceImplementation(CustomerRepo customerRepo) {
-        this.customerRepo = customerRepo;
+    public CustomerServiceImplementation(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     @Override
@@ -24,7 +23,7 @@ public class CustomerServiceImplementation implements CustomerService {
         Customer customer = CustomerMapper.toEntity(createCustomerDTO);
 
         // Save to database
-        Customer savedCustomer = customerRepo.save(customer);
+        Customer savedCustomer = customerRepository.save(customer);
 
         //Map saved customer entity to customerDTO and return it
         return CustomerMapper.toDTO(savedCustomer);
@@ -32,18 +31,21 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<CustomerDTO> retrieveAllCustomers() {
-        return CustomerMapper.toDTO(customerRepo.findAll());
+
+        return CustomerMapper.toDTO(customerRepository.findAll());
     }
 
     @Override
     public CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException {
-        try{
-            Optional<Customer> optionalCustomer= customerRepo.findById(customer_id);
-         return CustomerMapper.toDTO(optionalCustomer.get());
+        Customer customer = customerRepository.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+        return CustomerMapper.toDTO(customer);
 
-        } catch (Exception e){
-             throw new CustomerNotFoundException(customer_id)  ;
-        }
+    }
 
+    @Override
+    public CustomerDTO deleteCustomer(Long customer_id) throws CustomerNotFoundException {
+        Customer customer = customerRepository.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+        customerRepository.delete(customer);
+        return CustomerMapper.toDTO(customer);
     }
 }

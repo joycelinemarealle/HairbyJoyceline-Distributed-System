@@ -1,9 +1,6 @@
 package com.hairbyjoyceline_marealle.hairbusiness.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,12 +11,17 @@ public class HairService implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long service_id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private double duration;
+
+    @Column(nullable = false)
     private double price;
 
-    public HairService(Long service_id, String name, double duration, double price) {
-        this.service_id = service_id;
+    public HairService( String name, double duration, double price) {
         this.name = name;
         this.duration = duration;
         this.price = price;
