@@ -5,17 +5,17 @@ import com.hairbyjoyceline_marealle.hairbusiness.dto.HairServiceRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.HairService;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.HairServiceNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.mapper.HairServiceMapper;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepo;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepository;
 import com.hairbyjoyceline_marealle.hairbusiness.service.HairServiceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class HairServiceImplementation implements HairServiceService {
-    private final HairServiceRepo hairServiceRepo;
+    private final HairServiceRepository hairServiceRepository;
 
-    public HairServiceImplementation(HairServiceRepo hairServiceRepo){
-        this.hairServiceRepo = hairServiceRepo;
+    public HairServiceImplementation(HairServiceRepository hairServiceRepository){
+        this.hairServiceRepository = hairServiceRepository;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class HairServiceImplementation implements HairServiceService {
        HairService hairService = HairServiceMapper.toEntity(hairServiceRequestDTO);
 //chan
         //save to database
-       HairService savedHairService =  hairServiceRepo.save(hairService);
+       HairService savedHairService =  hairServiceRepository.save(hairService);
 
        //return DTO using mapper
    return HairServiceMapper.toDTO(savedHairService);
@@ -32,12 +32,12 @@ public class HairServiceImplementation implements HairServiceService {
 
     @Override
     public List<HairServiceDTO> retrieveAllHairServices() {
-        return HairServiceMapper.toDTO(hairServiceRepo.findAll());
+        return HairServiceMapper.toDTO(hairServiceRepository.findAll());
     }
 
     @Override
     public HairServiceDTO findHairServiceById(Long hairService_id) throws HairServiceNotFoundException {
-      HairService hairService =   hairServiceRepo.findById(hairService_id).orElseThrow(()-> new HairServiceNotFoundException(hairService_id));
+      HairService hairService =   hairServiceRepository.findById(hairService_id).orElseThrow(()-> new HairServiceNotFoundException(hairService_id));
         return HairServiceMapper.toDTO(hairService) ;
     }
 

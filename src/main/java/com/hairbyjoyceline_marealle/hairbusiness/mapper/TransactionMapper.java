@@ -7,8 +7,8 @@ import com.hairbyjoyceline_marealle.hairbusiness.entity.HairService;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Transaction;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.HairServiceNotFoundException;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepo;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepo;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepository;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -16,21 +16,21 @@ import java.util.List;
 
 @Component //spring inject it into service layer and non- static toEntity
 public class TransactionMapper {
-    private final HairServiceRepo hairServiceRepo;
-    private final CustomerRepo customerRepo;
+    private final HairServiceRepository hairServiceRepository;
+    private final CustomerRepository customerRepository;
 
-    public TransactionMapper(HairServiceRepo hairServiceRepo, CustomerRepo customerRepo) {
-        this.hairServiceRepo = hairServiceRepo;
-        this.customerRepo = customerRepo;
+    public TransactionMapper(HairServiceRepository hairServiceRepository, CustomerRepository customerRepository) {
+        this.hairServiceRepository = hairServiceRepository;
+        this.customerRepository = customerRepository;
     }
 
     // Static toEntity method with repositories passed as parameters
     public  Transaction toEntity(TransactionRequestDTO transactionRequestDTO) {
         // Fetch HairService and Customer from repos
-        HairService hairService = hairServiceRepo.findById(transactionRequestDTO.hairService_id())
+        HairService hairService = hairServiceRepository.findById(transactionRequestDTO.hairService_id())
                 .orElseThrow(() -> new HairServiceNotFoundException(transactionRequestDTO.hairService_id()));
 
-        Customer customer = customerRepo.findById(transactionRequestDTO.customer_id())
+        Customer customer = customerRepository.findById(transactionRequestDTO.customer_id())
                 .orElseThrow(() -> new CustomerNotFoundException(transactionRequestDTO.customer_id()));
 
         // Create and return the Transaction entity
