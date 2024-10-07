@@ -17,7 +17,7 @@ public class Customer implements Serializable {
     private Long customer_id;
 
     @Column(nullable = false)
-    private String name;
+    private String fullName;
 
     @Column(nullable = false)
     private String email;
@@ -25,12 +25,14 @@ public class Customer implements Serializable {
     @Column(nullable = false)
     private Long phoneNumber;
 
+    @NotNull
+    private boolean isRemoved = false;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy(value = "appt_id desc")
     private final List<Appointment> appointments = new ArrayList<>();
 
-    public Customer( String name, String email, Long phoneNumber) {
-        this.name = name;
+    public Customer( String fullName, String email, Long phoneNumber) {
+        this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
@@ -47,16 +49,26 @@ public class Customer implements Serializable {
         this.customer_id = customer_id;
     }
 
+    public boolean isRemoved() {
+
+        return isRemoved;
+    }
+
+    public void setRemoved(boolean removed) {
+
+        isRemoved = removed;
+    }
+
     public List<Appointment> getAppointments() {
         return appointments;
     }
 
-    public String getName() {
-        return name;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -92,7 +104,7 @@ public class Customer implements Serializable {
     public String toString() {
         return "Customer{" +
                 "customer_id=" + customer_id +
-                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 '}';

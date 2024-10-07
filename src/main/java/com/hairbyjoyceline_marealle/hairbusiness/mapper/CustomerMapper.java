@@ -11,7 +11,7 @@ public class CustomerMapper {
   public static CustomerDTO toDTO(Customer customer)  {
     return new CustomerDTO(
             customer.getCustomer_id(),
-            customer.getName(),
+            customer.getfullName(),
           AppointmentsMapper.toDTO(customer.getAppointments())); //need to convert each appointment from list entitiy to list DT
 
   }
@@ -29,7 +29,7 @@ public class CustomerMapper {
     return customers.stream()
             .map(customer -> new CustomerDTO(
                     customer.getCustomer_id(),
-                    customer.getName(),
+                    customer.getfullName(),
                    AppointmentsMapper.toDTO(customer.getAppointments())
             )).toList()
             ;

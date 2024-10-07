@@ -4,6 +4,6 @@ import java.util.List;
 
 public record CustomerDTO(
     Long customerId,
-    String name,
+    String fullName,
     List<AppointmentDTO> appointments){
 }

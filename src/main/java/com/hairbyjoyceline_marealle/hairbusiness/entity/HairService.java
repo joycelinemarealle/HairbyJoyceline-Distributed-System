@@ -78,7 +78,7 @@ public class HairService implements Serializable {
     public String toString() {
         return "Service{" +
                 "serv_id=" + service_id +
-                ", name='" + name + '\'' +
+                ", fullName='" + name + '\'' +
                 ", duration=" + duration +
                 ", price=" + price +
                 '}';
