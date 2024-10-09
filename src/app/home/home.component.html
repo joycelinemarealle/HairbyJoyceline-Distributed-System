@@ -1,0 +1,12 @@
+<section>
+  <form>
+    <input type = "text" placeholder = "Filter by service"/>
+    <button class = "primary" type = "button"> Search </button>
+  </form>
+</section>
+<section class = "results">
+  <app-hair-style *ngFor="let hairStyle of hairStyleList"
+                  [hairStyle]="hairStyle"
+  ></app-hair-style>
+</section>
+
