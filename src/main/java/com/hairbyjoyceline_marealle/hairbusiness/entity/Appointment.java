@@ -28,13 +28,13 @@ public class Appointment implements Serializable {
 
   @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
   @JoinColumn(name = "service_id")
-    private HairService hairService;
+    private HairStyle hairService;
 
   public Long getAppt_id() {
     return appt_id;
   }
 
-  public Appointment( Customer customer, HairService hairService, LocalDate appt_date, LocalTime appt_time,  AppointmentStatus appointmentStatus) {
+  public Appointment(Customer customer, HairStyle hairService, LocalDate appt_date, LocalTime appt_time, AppointmentStatus appointmentStatus) {
     this.appt_date = appt_date;
     this.appt_time = appt_time;
     this.appointmentStatus = appointmentStatus;
@@ -46,11 +46,11 @@ public class Appointment implements Serializable {
 
   }
 
-  public HairService getHairService() {
+  public HairStyle getHairService() {
     return hairService;
   }
 
-  public void setHairService(HairService hairService) {
+  public void setHairService(HairStyle hairService) {
     this.hairService = hairService;
   }
 

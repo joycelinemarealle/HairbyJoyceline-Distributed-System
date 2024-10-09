@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class HairService implements Serializable {
+public class HairStyle implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class HairService implements Serializable {
     @Column(nullable = false)
     private double price;
 
-    public HairService( String name, double duration, double price) {
+    public HairStyle(String name, double duration, double price) {
         this.name = name;
         this.duration = duration;
         this.price = price;
@@ -65,7 +65,7 @@ public class HairService implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HairService that = (HairService) o;
+        HairStyle that = (HairStyle) o;
         return Objects.equals(service_id, that.service_id);
     }
 
