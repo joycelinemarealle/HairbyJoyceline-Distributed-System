@@ -9,12 +9,23 @@
 }
 :root {
   --primary-color: #3498db; /* Example value */
+  --accent-color: purple
 }
 
 h1{
   color: #F8EDE3;
-  background-color: #D0B8A8;
+  background-color: #85586F;
   text-align: center;
+}
+
+h2 {
+  color : black;
+
+}
+
+.content{
+  color: #85586F;
+  background-color: #F8EDE3 ;
 }
 
 
