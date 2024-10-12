@@ -1,6 +1,25 @@
-<section>
-<!-- <p details works! {{hairServiceId}} -->
+<article>
+<img
+  class = "style-photo"
+  [src] =  "hairStyle?.photo"
+  alt = "Exterior photo of {{hairStyle?.name}}"
+  crossorigin
+  />
+
+<section class = "style-description">
+  <h2 class = "style-heading"> {{ hairStyle?.name }}</h2>
+  <p class = "style- price"> {{hairStyle?.price}}</p>
 </section>
+
+<section class = "style-features">
+  <h2 class = "section-heading"> About this hair style </h2>
+  <ul>
+    <li> Duration: {{hairStyle?.duration}}</li>
+  </ul>
+
+</section>
+
+</article>
 
 
 

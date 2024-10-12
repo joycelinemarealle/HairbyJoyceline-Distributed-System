@@ -3,4 +3,5 @@ export interface HairStyle {
   name: string;
   photo: string;
   price : string
+  duration: string
 }
