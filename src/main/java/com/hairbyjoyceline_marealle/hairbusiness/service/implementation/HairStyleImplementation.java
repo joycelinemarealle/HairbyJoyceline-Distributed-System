@@ -34,7 +34,7 @@ public class HairStyleImplementation implements HairStyleService {
     public List<HairServiceDTO> retrieveAllHairServices() {
         return HairStyleMapper.toDTO(hairStyleRepository.findAll());
     }
-
+//
     @Override
     public HairServiceDTO findHairServiceById(Long hairService_id) throws HairStyleNotFoundException {
       HairStyle hairStyle =   hairStyleRepository.findById(hairService_id).orElseThrow(()-> new HairStyleNotFoundException(hairService_id));
