@@ -2,13 +2,13 @@ package com.hairbyjoyceline_marealle.hairbusiness.entity;
 
 import com.hairbyjoyceline_marealle.hairbusiness.enums.AppointmentStatus;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
+//@Table (name = "appointments", schema = "hair_booking_system")
 public class Appointment implements Serializable {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -20,6 +20,7 @@ public class Appointment implements Serializable {
   @Column(nullable = false)
     private LocalTime appt_time;
 
+  @Enumerated(EnumType.STRING)
     private AppointmentStatus appointmentStatus;
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)

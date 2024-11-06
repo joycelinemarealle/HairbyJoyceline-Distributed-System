@@ -1,12 +1,12 @@
 package com.hairbyjoyceline_marealle.hairbusiness.entity;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+
 public class Admin implements Serializable {
     @Id
     private Long admin_id;
