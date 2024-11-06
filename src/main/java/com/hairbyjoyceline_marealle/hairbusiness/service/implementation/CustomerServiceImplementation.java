@@ -7,9 +7,11 @@ import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundExcep
 import com.hairbyjoyceline_marealle.hairbusiness.mapper.CustomerMapper;
 import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
 import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepository customerRepository;
 

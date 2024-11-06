@@ -12,13 +12,13 @@ import java.util.Objects;
 public class Appointment implements Serializable {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long appt_id ;
+    private Long appointment_id ;
 
   @Column(nullable = false)
-    private LocalDate appt_date;
+    private LocalDate appointment_date;
 
   @Column(nullable = false)
-    private LocalTime appt_time;
+    private LocalTime appointment_time;
 
   @Enumerated(EnumType.STRING)
     private AppointmentStatus appointmentStatus;
@@ -31,13 +31,13 @@ public class Appointment implements Serializable {
   @JoinColumn(name = "service_id")
     private HairStyle hairService;
 
-  public Long getAppt_id() {
-    return appt_id;
+  public Long getappointment_id() {
+    return appointment_id;
   }
 
-  public Appointment(Customer customer, HairStyle hairService, LocalDate appt_date, LocalTime appt_time, AppointmentStatus appointmentStatus) {
-    this.appt_date = appt_date;
-    this.appt_time = appt_time;
+  public Appointment(Customer customer, HairStyle hairService, LocalDate appointment_date, LocalTime appointment_time, AppointmentStatus appointmentStatus) {
+    this.appointment_date = appointment_date;
+    this.appointment_time = appointment_time;
     this.appointmentStatus = appointmentStatus;
     this.customer = customer;
     this.hairService = hairService;
@@ -56,20 +56,20 @@ public class Appointment implements Serializable {
   }
 
 
-  public LocalDate getAppt_date() {
-    return appt_date;
+  public LocalDate getappointment_date() {
+    return appointment_date;
   }
 
-  public void setAppt_date(LocalDate appt_date) {
-    this.appt_date = appt_date;
+  public void setappointment_date(LocalDate appointment_date) {
+    this.appointment_date = appointment_date;
   }
 
-  public LocalTime getAppt_time() {
-    return appt_time;
+  public LocalTime getappointment_time() {
+    return appointment_time;
   }
 
-  public void setAppt_time(LocalTime appt_time) {
-    this.appt_time = appt_time;
+  public void setappointment_time(LocalTime appointment_time) {
+    this.appointment_time = appointment_time;
   }
 
   public AppointmentStatus getAppointmentStatus() {
@@ -93,20 +93,20 @@ public class Appointment implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Appointment that = (Appointment) o;
-    return Objects.equals(appt_id, that.appt_id);
+    return Objects.equals(appointment_id, that.appointment_id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(appt_id);
+    return Objects.hashCode(appointment_id);
   }
 
   @Override
   public String toString() {
     return "Appointment{" +
-            "appt_id=" + appt_id +
-            ", appt_date=" + appt_date +
-            ", appt_time=" + appt_time +
+            "appointment_id=" + appointment_id +
+            ", appointment_date=" + appointment_date +
+            ", appointment_time=" + appointment_time +
             ", AppointmentStatus=" + appointmentStatus +
             ", customer=" + customer +
             '}';

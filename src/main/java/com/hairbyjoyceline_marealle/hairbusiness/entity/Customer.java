@@ -27,6 +27,7 @@ public class Customer implements Serializable {
 
     @NotNull
     private boolean isRemoved = false;
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy(value = "appt_id desc")
     private final List<Appointment> appointments = new ArrayList<>();
