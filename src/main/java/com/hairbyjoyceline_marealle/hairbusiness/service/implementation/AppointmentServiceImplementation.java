@@ -8,7 +8,7 @@ import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundExcep
 import com.hairbyjoyceline_marealle.hairbusiness.mapper.AppointmentsMapper;
 import com.hairbyjoyceline_marealle.hairbusiness.repository.AppointmentRepository;
 import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepository;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.HairStyleRepository;
 import com.hairbyjoyceline_marealle.hairbusiness.service.AppointmentService;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +20,13 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private final CustomerRepository customerRepository;
-    private final HairServiceRepository hairServiceRepository;
+    private final HairStyleRepository hairStyleRepository;
     AppointmentsMapper appointmentsMapper;
 
-    public AppointmentServiceImplementation(AppointmentRepository appointmentRepository, CustomerRepository customerRepository, HairServiceRepository hairServiceRepository) {
+    public AppointmentServiceImplementation(AppointmentRepository appointmentRepository, CustomerRepository customerRepository, HairStyleRepository hairStyleRepository) {
         this.appointmentRepository = appointmentRepository;
         this.customerRepository = customerRepository;
-        this.hairServiceRepository = hairServiceRepository;
+        this.hairStyleRepository = hairStyleRepository;
     }
 
     @Override

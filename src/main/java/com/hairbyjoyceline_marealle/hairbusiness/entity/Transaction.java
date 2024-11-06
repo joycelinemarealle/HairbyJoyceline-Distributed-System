@@ -22,7 +22,7 @@ public class Transaction implements Serializable {
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn (name =  "service_id")
-    private HairService hairService;
+    private HairStyle hairService;
 
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn (name =  "customer_id")
@@ -35,7 +35,7 @@ public class Transaction implements Serializable {
     private TransactionStatus transactionStatus;
 
 
-    public Transaction(LocalDate transaction_date, double amount, PaymentMethod paymentMethod, HairService hairService, Customer customer, TransactionType transactionType, TransactionStatus transactionStatus) {
+    public Transaction(LocalDate transaction_date, double amount, PaymentMethod paymentMethod, HairStyle hairService, Customer customer, TransactionType transactionType, TransactionStatus transactionStatus) {
         this.transaction_date = transaction_date;
         this.amount = amount;
         this.paymentMethod = paymentMethod;
@@ -48,7 +48,7 @@ public class Transaction implements Serializable {
     public Transaction (){
     }
 
-    public Transaction(LocalDate now, Double amount, PaymentMethod paymentMethod, HairService hairService, Customer customer, TransactionType transactionType) {
+    public Transaction(LocalDate now, Double amount, PaymentMethod paymentMethod, HairStyle hairService, Customer customer, TransactionType transactionType) {
     }
 
 
@@ -84,11 +84,11 @@ public class Transaction implements Serializable {
         this.paymentMethod = paymentMethod;
     }
 
-    public HairService getHairService() {
+    public HairStyle getHairService() {
         return hairService;
     }
 
-    public void setHairService(HairService hairService) {
+    public void setHairService(HairStyle hairService) {
         this.hairService = hairService;
     }
 

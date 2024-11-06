@@ -4,23 +4,23 @@ import com.hairbyjoyceline_marealle.hairbusiness.dto.AppointmentDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.dto.AppointmentRequestDTO;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Appointment;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
-import com.hairbyjoyceline_marealle.hairbusiness.entity.HairService;
+import com.hairbyjoyceline_marealle.hairbusiness.entity.HairStyle;
 import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
-import com.hairbyjoyceline_marealle.hairbusiness.exception.HairServiceNotFoundException;
+import com.hairbyjoyceline_marealle.hairbusiness.exception.HairStyleNotFoundException;
 import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
-import com.hairbyjoyceline_marealle.hairbusiness.repository.HairServiceRepository;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.HairStyleRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
 public class AppointmentsMapper {
-    public AppointmentsMapper(HairServiceRepository hairServiceRepository, CustomerRepository customerRepository) {
-        this.hairServiceRepository = hairServiceRepository;
+    public AppointmentsMapper(HairStyleRepository hairStyleRepository, CustomerRepository customerRepository) {
+        this.hairStyleRepository = hairStyleRepository;
         this.customerRepository = customerRepository;
     }
 
     private final CustomerRepository customerRepository;
-    private final HairServiceRepository hairServiceRepository;
+    private final HairStyleRepository hairStyleRepository;
 
     //Convert appointment entity list to apt DTO
     public static List<AppointmentDTO> toDTO(List<Appointment> appointments){
@@ -40,7 +40,7 @@ public class AppointmentsMapper {
 
         //Fetch the customer and service entities //check if customer exists  + registered
         Customer customer = customerRepository.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
-        HairService hairService = hairServiceRepository.findById(hairService_id).orElseThrow(() -> new HairServiceNotFoundException(hairService_id));
+        HairStyle hairService = hairStyleRepository.findById(hairService_id).orElseThrow(() -> new HairStyleNotFoundException(hairService_id));
         return new Appointment(
                 customer,
                 hairService,
