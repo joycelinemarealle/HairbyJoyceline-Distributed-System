@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 
 @Entity
-//@Table (name = "Admin", schema = "hair_booking_system")
+@Table (name = "Admin", schema = "hair_business")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

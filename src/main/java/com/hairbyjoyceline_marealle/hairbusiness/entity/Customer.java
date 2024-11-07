@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-//@Table (name = "customers", schema = "hair_booking_system")
+@Table (name = "customers", schema = "hair_business")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

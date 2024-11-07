@@ -14,7 +14,7 @@ import java.util.Objects;
 
 
 @Entity
-//@Table (name = "appointments", schema = "hair_booking_system")
+@Table (name = "appointments", schema = "hair_business")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
