@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class HairStyleImplementation implements HairStyleService {
+public class HairStyleServiceImplementation implements HairStyleService {
     private final HairStyleRepository hairStyleRepository;
 
-    public HairStyleImplementation(HairStyleRepository hairStyleRepository){
+    public HairStyleServiceImplementation(HairStyleRepository hairStyleRepository){
         this.hairStyleRepository = hairStyleRepository;
     }
 

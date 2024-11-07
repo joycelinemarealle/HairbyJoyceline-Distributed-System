@@ -10,10 +10,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/hairservice")
 @CrossOrigin
-public class HairServiceController {
+public class HairStyleController {
     private final HairStyleService hairStyleService;
 
-    public HairServiceController(HairStyleService hairStyleService) {
+    public HairStyleController(HairStyleService hairStyleService) {
         this.hairStyleService = hairStyleService;
     }
 
