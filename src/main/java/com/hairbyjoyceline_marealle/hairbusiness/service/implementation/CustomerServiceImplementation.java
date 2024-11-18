@@ -1,24 +1,31 @@
-//package com.hairbyjoyceline_marealle.hairbusiness.service.implementation;
-//
+package com.hairbyjoyceline_marealle.hairbusiness.service.implementation;
+
 //import com.hairbyjoyceline_marealle.hairbusiness.dto.CustomerDTO;
 //import com.hairbyjoyceline_marealle.hairbusiness.dto.CustomerRequestDTO;
-//import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
+import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
 //import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
 //import com.hairbyjoyceline_marealle.hairbusiness.mapper.CustomerMapper;
-//import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
-//import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.List;
-//
-//@Service
-//public class CustomerServiceImplementation implements CustomerService {
-//    private final CustomerRepository customerRepository;
-//
-//    public CustomerServiceImplementation(CustomerRepository customerRepository) {
-//        this.customerRepository = customerRepository;
-//    }
-//
+import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundException;
+import com.hairbyjoyceline_marealle.hairbusiness.repository.CustomerRepository;
+import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CustomerServiceImplementation implements CustomerService {
+    private final CustomerRepository customerRepository;
+
+    public CustomerServiceImplementation(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    @Override
+    public Customer findCustomerById(Long customer_id) throws CustomerNotFoundException {
+        return customerRepository.findById(customer_id).orElseThrow(() -> new CustomerNotFoundException(customer_id));
+    }
+
+
 //    @Override
 //    public CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO) {
 //       //Map customerRequestDTO to Customer Entity
@@ -50,4 +57,4 @@
 //        customerRepository.delete(customer);
 //        return CustomerMapper.toDTO(customer);
 //    }
-//}
+}
