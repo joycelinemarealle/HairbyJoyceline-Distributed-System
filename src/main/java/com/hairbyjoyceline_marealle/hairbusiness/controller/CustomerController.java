@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*") //allows requests from Swagger host
 
 public class CustomerController {
     private final CustomerService customerService;
