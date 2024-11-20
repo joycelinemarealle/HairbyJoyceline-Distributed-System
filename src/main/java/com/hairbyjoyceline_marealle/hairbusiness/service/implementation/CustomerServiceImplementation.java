@@ -11,7 +11,6 @@ import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,16 +23,29 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Override
-    public Customer findCustomerById(Long customer_id){
-        return customerRepository.findById(customer_id)
-                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
+    public Optional<Customer> getCustomerById(Long customer_id) throws CustomerNotFoundException {
+        Optional<Customer> customer = customerRepository.findById(customer_id);
+        if (customer.isPresent()) {
+            return Optional.of(customer.get());
+        }else{
+            throw new CustomerNotFoundException(customer_id);
+        }
+
     }
 
-    @Override
-    public Customer getCustomerById(Long customer_id) throws CustomerNotFoundException {
-        return customerRepository.findById(customer_id)
-                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
-    }
+//    @Override
+//    public Customer getCustomerById (Long customer_id) throws CustomerNotFoundException {
+//        return customerRepository.findById(customer_id)
+//                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
+//    }
+
+
+
+//    @Override
+//    public Customer getCustomerById(Long customer_id) throws CustomerNotFoundException {
+//        return customerRepository.findById(customer_id)
+//                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
+//    }
 }
 
 //    public Customer getCustomerById(Long customer_id) {
