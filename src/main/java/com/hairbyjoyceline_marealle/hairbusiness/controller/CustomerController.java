@@ -5,6 +5,7 @@ package com.hairbyjoyceline_marealle.hairbusiness.controller;
 import com.hairbyjoyceline_marealle.hairbusiness.entity.Customer;
 import com.hairbyjoyceline_marealle.hairbusiness.service.CustomerService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,15 +22,33 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-//    @GetMapping
+//    @GetMapping("/{customer_id}")
+//    public Customer findCustomerById(@PathVariable Long customer_id){
+//        return customerService.findCustomerById(customer_id);
+//    }
+
+
+
+    @GetMapping("/{customer_id}")
+    public Customer getCustomerById(@PathVariable Long customer_id){
+        var result = customerService.getCustomerById(customer_id);
+        return result;
+    }
+//    public ResponseEntity<BuildingResponseDTO> getBuildingById(@PathVariable Long id) {
+//        BuildingResponseDTO response = buildingService.getBuildingById(id);
+//        return ResponseEntity.ok(response);
+//    }
+
+    @GetMapping("")
+    public String getName(){
+        return "Hello Joyceline Marealle";
+    }
+
+    //@GetMapping
 //    public List<CustomerDTO> getAllAccounts(){
 //        return customerService.retrieveAllCustomers();
 //    }
 
-    @GetMapping("/{customer_id}")
-    public Customer findCustomerById(@PathVariable Long customer_id){
-        return customerService.findCustomerById(customer_id);
-    }
 //    @GetMapping("/{customer_id}")
 //    public CustomerDTO findCustomerById(@PathVariable Long customer_id){
 //        return customerService.findCustomerById(customer_id);

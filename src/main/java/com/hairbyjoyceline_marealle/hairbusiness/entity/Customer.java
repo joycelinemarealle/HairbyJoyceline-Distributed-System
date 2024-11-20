@@ -17,9 +17,9 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@Getter
+//@Setter
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Builder
 public class Customer implements Serializable {
 
@@ -36,7 +36,7 @@ public class Customer implements Serializable {
     @Column(nullable = false)
     private Long phoneNumber;
 
-    @NotNull
+    @Column(nullable = false)
     private boolean isRemoved = false;
 
 //    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
