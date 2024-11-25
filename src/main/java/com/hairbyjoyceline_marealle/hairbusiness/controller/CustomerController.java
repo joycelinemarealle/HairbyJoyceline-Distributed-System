@@ -21,20 +21,36 @@ import java.util.Optional;
 
 public class CustomerController {
     private final CustomerService customerService;
-    private final CustomerServiceImplementation customerServiceImplementation;
-
     //constructor injection
     public CustomerController(CustomerService customerService, CustomerServiceImplementation customerServiceImplementation) {
         this.customerService = customerService;
-        this.customerServiceImplementation = customerServiceImplementation;
     }
-
     @GetMapping("/{customer_id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable Long customer_id) {
-        Optional<Customer> customer = customerService.getCustomerById(customer_id);
-
-        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public Customer getCustomer(@PathVariable Long customer_id) {
+        return customerService.getCustomerById(customer_id);
     }
+
+//    @GetMapping("")
+//    public String getName(){
+//        return "Hello Joyceline Marealle";
+//    }
+
+//    @GetMapping("/{customer_id}")
+//    public ResponseEntity<Customer> getCustomer(@PathVariable Long customer_id) {
+//        Optional<Customer> customer = customerService.getCustomerById(customer_id);
+//
+//        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+
+
+//    @GetMapping(value = "/{customer_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<Customer> getCustomer(@PathVariable Long customer_id) {
+//        Optional<Customer> customer = customerService.getCustomerById(customer_id);
+//
+//        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//    }
+
+
 
 //    @GetMapping("/{customer_id}")
 //    public Customer getCustomerById(@PathVariable Long customer_id){
@@ -46,10 +62,7 @@ public class CustomerController {
 //        return ResponseEntity.ok(response);
 //    }
 
-    @GetMapping("")
-    public String getName(){
-        return "Hello Joyceline Marealle";
-    }
+
 
     //@GetMapping
 //    public List<CustomerDTO> getAllAccounts(){

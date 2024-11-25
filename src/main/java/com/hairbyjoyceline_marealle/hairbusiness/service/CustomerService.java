@@ -8,10 +8,10 @@ import com.hairbyjoyceline_marealle.hairbusiness.exception.CustomerNotFoundExcep
 import java.util.Optional;
 
 public interface CustomerService  {
-    Optional<Customer> getCustomerById(Long customer_id) throws CustomerNotFoundException;
+    //Optional<Customer> getCustomerById(Long customer_id) throws CustomerNotFoundException;
 //    CustomerDTO createCustomer(CustomerRequestDTO createCustomerDTO);
 //    List<CustomerDTO> retrieveAllCustomers();
-  //Customer getCustomerById(Long customer_id) throws CustomerNotFoundException;
+  Customer getCustomerById(Long customer_id) throws CustomerNotFoundException;
    // Customer getCustomerById(Long customer_id) throws CustomerNotFoundException;
     //CustomerDTO findCustomerById(Long customer_id) throws CustomerNotFoundException;
 //    CustomerDTO deleteCustomer (Long customer_id) throws CustomerNotFoundException;

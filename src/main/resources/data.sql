@@ -1,6 +1,6 @@
-INSERT INTO  hair_business.customers (phone_number, email, full_name)
+INSERT INTO  hair_business.customers ( full_name,email,  phone_number)
 VALUES
-    ( 59596987, 'jj@gmail.com', 'Joyceline Marealle'),
-    ( 3456789, 'em@gmail.com', 'Eva Marealle'),
-    ( 789090, 'es@gmail.com', 'Elton Jacob')
+    ( 'Joyceline Marealle','jj@gmail.com', 59596987),
+    ( 'Eva Marealle', 'em@gmail.com', 456789),
+    ( 'Elton Jacob','es@gmail.com', 789090 )
 ON CONFLICT DO NOTHING;

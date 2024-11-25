@@ -17,29 +17,26 @@ import java.util.Optional;
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepository customerRepository;
 
-    @Autowired
     public CustomerServiceImplementation(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Long customer_id) throws CustomerNotFoundException {
-        Optional<Customer> customer = customerRepository.findById(customer_id);
-        if (customer.isPresent()) {
-            return Optional.of(customer.get());
-        }else{
-            throw new CustomerNotFoundException(customer_id);
-        }
-
+    public Customer getCustomerById (Long customer_id) throws CustomerNotFoundException {
+        return customerRepository.findById(customer_id)
+                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
     }
 
 //    @Override
-//    public Customer getCustomerById (Long customer_id) throws CustomerNotFoundException {
-//        return customerRepository.findById(customer_id)
-//                .orElseThrow(() -> new CustomerNotFoundException( customer_id));
+//    public Optional<Customer> getCustomerById(Long customer_id) throws CustomerNotFoundException {
+//        Optional<Customer> customer = customerRepository.findById(customer_id);
+//        if (customer.isPresent()) {
+//            return customer;
+//        }else{
+//            throw new CustomerNotFoundException(customer_id);
+//        }
+//
 //    }
-
-
 
 //    @Override
 //    public Customer getCustomerById(Long customer_id) throws CustomerNotFoundException {
